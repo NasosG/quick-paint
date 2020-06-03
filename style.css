@@ -1,0 +1,127 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: Comic Sans MS;
+	background: lightgrey;
+}
+
+@media only screen and (min-width: 0px) {
+	button {
+		padding: 4px; 
+		border-radius: 10px; 
+		opacity: 0.85;
+		position: absolute;
+		cursor: pointer;
+		right: 2% !important; 
+		font-size: 17px !important;
+		min-width: 120px !important;
+		background: white;
+	}
+}
+
+@media only screen and (min-width: 600px) {
+	button {
+		padding: 5px; 
+		border-radius: 10px; 
+		opacity: 0.85;
+		position: absolute;
+		cursor: pointer;
+		right: 2%  !important; 
+		font-size: 18px !important;
+		min-width: 130px !important;
+		background: white;
+	}
+}
+
+@media only screen and (min-width: 1630px) {
+	button {
+		padding: 5px; 
+		border-radius: 10px; 
+		opacity: 0.85;
+		position: absolute;
+		cursor: pointer;
+		right: 2.4%  !important; 
+		font-size: 18px !important;
+		min-width: 130px !important;
+		background: white;
+	}
+}
+
+button:hover {
+	opacity: 1;
+	border: solid black;
+}
+
+button:focus {
+	outline: 0;
+}
+
+@media only screen and (min-height: 0px) {
+	#resetBut {
+		top: 340px;
+		color: darkRed;
+	}
+}
+
+@media only screen and (min-height: 540px) {
+	#resetBut {
+		top: 60%;
+		color: darkRed;
+	}
+}
+
+#fav-color {
+	background: none;
+	color: inherit;
+	border: none;
+	cursor: default;
+	outline: inherit;
+}
+
+input{
+	cursor: pointer;
+}
+
+input[type=color] {
+	max-width: 42px;
+}
+
+#tsize {
+	width: 110px;
+}
+
+#canvas{
+	//border: 2px solid black;
+	position: absolute;
+	background: white;
+	-webkit-box-shadow: 10px 10px 32px -8px rgba(117,113,117,0.35);
+	-moz-box-shadow: 10px 10px 32px -8px rgba(117,113,117,0.35);
+	box-shadow: 10px 10px 32px -8px rgba(117,113,117,0.35);
+}
+
+#redBut {
+	top:30px;
+	color:red;
+}
+
+#blackBut {
+	top:75px;
+}
+
+#otherBut {
+	top:120px;
+}
+
+#rubberBut {
+	top: 165px; 
+	color: grey;
+}
+
+#cursorBut {
+	top:210px; color: DarkCyan;
+}
+
+#bSize {
+	top:260px;
+}
