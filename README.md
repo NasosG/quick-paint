@@ -2,6 +2,8 @@
 
 Quick Paint is a simple paint app, created mostly for educational purposes. The main idea was to create a nice simple paint app using (mostly) javascript.
 
+[![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) 
+
 ## Download and Demo
 
 Of course you can download the files from here: https://github.com/NasosG/simple-js-paint. 
@@ -28,7 +30,7 @@ Copyright ©  2020. The project is available as open source under the terms of t
 
 - **[MIT license](http://opensource.org/licenses/mit-license.php)**
 
-** THANKS FOR READING **
+**-- THANKS FOR READING --**
 
 
 
