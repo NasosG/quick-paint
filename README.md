@@ -29,7 +29,9 @@ A browser :-)
 Copyright ©  2020. The project is available as open source under the terms of the MIT License.
 
 - **[MIT license](http://opensource.org/licenses/mit-license.php)**
+
 <br>
+
 **-- THANKS FOR READING --**
 
 
