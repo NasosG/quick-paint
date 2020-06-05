@@ -12,11 +12,23 @@ You can see a demo of the app here: https://quickpaint.netlify.app/
 
 A browser :-)
 
+## Screenshots
+
+### Just painted something :>
+
+<div align="center"><img src="images/Screenshot_1.png" alt="image1"></div>
+
+### App is funtional and responsive on smaller screens too
+
+<div align="center"><img src="images/Screenshot_2.png" alt="image1"></div>
 
 ## Copyright and License
 
-Copyright (c) 2020 MIT licence
+Copyright ©  2020. The project is available as open source under the terms of the MIT License.
 
+- **[MIT license](http://opensource.org/licenses/mit-license.php)**
+
+** THANKS FOR READING **
 
 
 
