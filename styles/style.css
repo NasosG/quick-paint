@@ -101,16 +101,16 @@ input[type=color] {
 }
 
 #redBut {
-	top:30px;
-	color:red;
+	top: 30px;
+	color: red;
 }
 
 #blackBut {
-	top:75px;
+	top: 75px;
 }
 
 #otherBut {
-	top:120px;
+	top: 120px;
 }
 
 #rubberBut {
@@ -119,13 +119,14 @@ input[type=color] {
 }
 
 #cursorBut {
-	top:210px; color: DarkCyan;
+	top: 210px; 
+	color: DarkCyan;
 }
 
 #bSize {
-	top:260px;
+	top: 260px;
 }
 
 #str8Line {
-	top:335px;
+	top: 335px;
 }

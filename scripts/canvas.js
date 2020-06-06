@@ -1,7 +1,9 @@
 window.addEventListener("load", () => {
 const canvas = document.querySelector("#canvas");
-if (!canvas.getContext) return; 
-const ctx = canvas.getContext("2d");
+// getContext method returns a drawing context on the canvas, 
+// or null if the context identifier is not supported
+if (!canvas.getContext) return; // and if the context identifier is not supported we can't continue
+const ctx = canvas.getContext("2d"); // 2-dimensional rendering context
 
 // starting width and height
 changeWindowSize();
