@@ -59,12 +59,12 @@ button:focus {
 
 @media only screen and (min-height: 0px) {
 	#resetBut {
-		top: 340px;
+		top: 385px;
 		color: darkRed;
 	}
 }
 
-@media only screen and (min-height: 540px) {
+@media only screen and (min-height: 640px) {
 	#resetBut {
 		top: 60%;
 		color: darkRed;
@@ -124,4 +124,8 @@ input[type=color] {
 
 #bSize {
 	top:260px;
+}
+
+#str8Line {
+	top:335px;
 }

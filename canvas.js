@@ -1,5 +1,6 @@
 window.addEventListener("load", () => {
 const canvas = document.querySelector("#canvas");
+if (!canvas.getContext) return; 
 const ctx = canvas.getContext("2d");
 
 // starting width and height
@@ -10,16 +11,22 @@ let penColor = "black";
 let painting = false;
 let brushWidth = 10;
 let mouseDown = false;
+let needFirstPoint = true;
+let lining = false;
 
 // functions
 function startPosition(e) {
-	painting = true;
-	draw(e);
+	if(!lining){
+		painting = true;
+		draw(e);
+	}
 }
 
 function finishedPosition() {
-	painting = false;
-	ctx.beginPath();
+	if(!lining){
+		painting = false;
+		ctx.beginPath();
+	}
 }
 
 function draw(e) {
@@ -35,13 +42,15 @@ function draw(e) {
 
 function cursorChange(e) {
 	// in one line
-	//document.body.style.cursor == "crosshair"?document.body.style.cursor = "default":document.body.style.cursor = "crosshair";
+	document.body.style.cursor == "crosshair" ? document.body.style.cursor = "default" : document.body.style.cursor = "crosshair";
 	
 	// more expressive
+	/*
 	cursor = document.body.style.cursor;
 	if (cursor == "crosshair")
 		document.body.style.cursor = "default"; 
 	else document.body.style.cursor = "crosshair";
+	*/
 }
 
 function changeWindowSize() {
@@ -71,6 +80,26 @@ function lineWidth() {
 		brushWidth = document.getElementById("tsize").value;
 }
 
+function drawNextLine(x, y) {
+    if (needFirstPoint) {
+        ctx.lineWidth = brushWidth;
+		ctx.strokeStyle = penColor;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        needFirstPoint = false;
+    }
+    else {
+        ctx.lineTo(x, y);
+        ctx.stroke();
+		needFirstPoint = true;
+    }
+}
+
+function resetLining() {
+	lining = false;
+	ctx.beginPath();
+}
+
 	// event listeners
 	// canvas event listeners
 	canvas.addEventListener("mousedown", startPosition);
@@ -78,23 +107,33 @@ function lineWidth() {
 	canvas.addEventListener("mousemove", draw);
 	canvas.addEventListener ("mouseout", finishedPosition);
 	canvas.addEventListener ("mouseenter", function(){ if(mouseDown) startPosition();});
+	canvas.addEventListener("click", function(e){
+		if (lining) {
+			var offset = $(this).offset();
+			var x = e.pageX - offset.left;
+			var y = e.pageY - offset.top;
+			drawNextLine(x, y);
+		}
+    });
 	
 	// document event listeners if mouse is down or up at the moment
 	document.addEventListener("mousedown", function() { mouseDown = true; });
 	document.addEventListener("mouseup", function() { mouseDown = false; });
 	
 	// document event listeners for buttons inputs e.t.c.
-	document.getElementById("redBut").addEventListener("click", function() { penColor = "red"; });
-	document.getElementById("blackBut").addEventListener("click", function() { penColor = "black"; });
+	document.getElementById("redBut").addEventListener("click", function() { penColor = "red"; resetLining();});
+	document.getElementById("blackBut").addEventListener("click", function() { penColor = "black"; resetLining();});
 	document.getElementById("favcolor").addEventListener("input", function() {
 		penColor = document.getElementById("favcolor").value; 
 	}, false);
 	document.getElementById("otherBut").addEventListener("click", function() { penColor = document.getElementById("favcolor").value; });
-	document.getElementById("rubberBut").addEventListener("click", function() { penColor = "white"; });
+	document.getElementById("rubberBut").addEventListener("click", function() { penColor = "white"; resetLining();});
 	document.getElementById("cursorBut").addEventListener("click", cursorChange);
 	document.getElementById("resetBut").addEventListener("click", resetCtx);
 	document.getElementById("tsize").addEventListener("input", lineWidth);
+	document.getElementById("str8Line").addEventListener("click", function() { lining = !lining; ctx.beginPath();});
 
 	// window listener when user resizes the window
 	window.addEventListener('resize', changeWindowSize);
+
 });
