@@ -15,13 +15,30 @@ let brushWidth = 10;
 let mouseDown = false;
 let needFirstPoint = true;
 let lining = false;
-
+a=null;
+b=null;
+var bounds = canvas.getBoundingClientRect();
+var startX = 0;
+			var startY = 0;
+			var mouseX = 0;
+			var mouseY = 0;
+			var isDrawing = false;
 // functions
 function startPosition(e) {
 	if(!lining){
 		painting = true;
 		draw(e);
 	}
+	
+					if (!isDrawing) {
+						startX = e.clientX - bounds.left;
+						startY = e.clientY - bounds.top;
+						
+						isDrawing = true;
+					}
+					
+					
+				
 }
 
 function finishedPosition() {
@@ -29,9 +46,38 @@ function finishedPosition() {
 		painting = false;
 		ctx.beginPath();
 	}
+	
+					if (isDrawing) {
+						
+						
+						isDrawing = false;
+						
+						
+					}
+					
+					
+				
 }
 
 function draw(e) {
+	if(lining){
+		mouseX = e.clientX - bounds.left;
+					mouseY = e.clientY - bounds.top;
+					
+					if (isDrawing) {
+						ctx.fillStyle = "white";
+				ctx.fillRect(0,0,canvas.width ,canvas.height);
+					
+			ctx.strokeStyle = penColor;
+					ctx.lineWidth = brushWidth;
+					ctx.beginPath();
+					ctx.moveTo(startX,startY);
+					ctx.lineTo(mouseX,mouseY);
+					ctx.stroke();
+					
+					}
+					return;
+	}
 	if (!painting) return;
 	ctx.lineWidth = brushWidth;
 	ctx.lineCap = "round";
@@ -89,6 +135,7 @@ function drawNextLine(x, y) {
         ctx.beginPath();
         ctx.moveTo(x, y);
         needFirstPoint = false;
+		a=x;b=y;
     }
     else {
         ctx.lineTo(x, y);
