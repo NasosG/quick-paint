@@ -43,32 +43,27 @@ function draw(e) {
 }
 
 function cursorChange(e) {
-	// in one line
-	document.body.style.cursor == "crosshair" ? document.body.style.cursor = "default" : document.body.style.cursor = "crosshair";
-	
-	// more expressive
-	/*
-	cursor = document.body.style.cursor;
-	if (cursor == "crosshair")
-		document.body.style.cursor = "default"; 
-	else document.body.style.cursor = "crosshair";
-	*/
+	document.body.style.cursor = (document.body.style.cursor == "crosshair") ? "default" : "crosshair";
 }
 
 function changeWindowSize() {
-		canvas.height = window.innerHeight;
-		if(window.innerWidth < 500) 
-				canvas.width = 0.6 * window.innerWidth;
-		else if(window.innerWidth < 800) 
-				canvas.width = 0.7 * window.innerWidth;
-		else if(window.innerWidth < 1100) 
-				canvas.width = 0.77 * window.innerWidth;
-		else if(window.innerWidth < 1300) 
-				canvas.width = 0.82 * window.innerWidth;
-		else {
-			canvas.height = window.innerHeight/1.1;
-			canvas.width = window.innerWidth/1.15;
-		}
+	var savedImg = ctx.getImageData(0, 0, canvas.width - 1, canvas.height - 1);
+	
+	canvas.height = window.innerHeight;
+	if(window.innerWidth < 500) 
+		canvas.width = 0.6 * window.innerWidth;
+	else if(window.innerWidth < 800) 
+		canvas.width = 0.7 * window.innerWidth;
+	else if(window.innerWidth < 1100) 
+		canvas.width = 0.77 * window.innerWidth;
+	else if(window.innerWidth < 1300) 
+		canvas.width = 0.82 * window.innerWidth;
+	else {
+		canvas.height = window.innerHeight/1.1;
+		canvas.width = window.innerWidth/1.15;
+	}
+	
+	ctx.putImageData(savedImg, 0, 0);
 }
 
 // function that uses a dialog box to reset the canvas
@@ -79,13 +74,13 @@ function resetCtx() {
 }
 
 function lineWidth() {
-		brushWidth = document.getElementById("tsize").value;
+	brushWidth = document.getElementById("tsize").value;
 }
 
 function drawNextLine(x, y) {
     if (needFirstPoint) {
         ctx.lineWidth = brushWidth;
-		ctx.strokeStyle = penColor;
+	    ctx.strokeStyle = penColor;
         ctx.beginPath();
         ctx.moveTo(x, y);
         needFirstPoint = false;
@@ -93,7 +88,7 @@ function drawNextLine(x, y) {
     else {
         ctx.lineTo(x, y);
         ctx.stroke();
-		needFirstPoint = true;
+	    needFirstPoint = true;
     }
 }
 
@@ -108,8 +103,8 @@ function resetLining() {
 	canvas.addEventListener("mouseup", finishedPosition);
 	canvas.addEventListener("mousemove", draw);
 	canvas.addEventListener ("mouseout", finishedPosition);
-	canvas.addEventListener ("mouseenter", function(){ if(mouseDown) startPosition();});
-	canvas.addEventListener("click", function(e){
+	canvas.addEventListener ("mouseenter", function(){ if(mouseDown) startPosition(); });
+	canvas.addEventListener("click", function(e) {
 		if (lining) {
 			var offset = $(this).offset();
 			var x = e.pageX - offset.left;
