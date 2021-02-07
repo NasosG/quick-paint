@@ -1,6 +1,6 @@
 # [Quick_Paint](https://quickpaint.netlify.app/)
 
-Quick Paint is a simple paint app, created mostly for educational purposes. The main idea was to create a nice simple paint app using (mostly) javascript.
+Quick Paint is a simple, web-based paint app, written in Javascript.
 
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://badges.mit-license.org) 
 
